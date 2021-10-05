@@ -40,7 +40,7 @@ const setPosition = () => {
 
 const checkBtns = () => {
   prevBtn.disabled = position === 0;
-  nextBtn.disabled = position <= -(slidesCount - slidesToShow) * slidesWidth;
+  nextBtn.disabled = position <= -(slidesCount - slidesToShow) * slidesWidth + 1;
 };
 
 checkBtns();
