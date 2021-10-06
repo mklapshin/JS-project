@@ -78,3 +78,38 @@ body {
 .active {
   background-color: #a04633;
 }
+
+.calculator {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.calculator-body {
+  margin: 0 0 0 600px;
+  text-align: center;
+}
+
+.line1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.calculatorScreen {
+  width: 173px;
+  height: 50px;
+  margin: 3px 0 0 0;
+  background: rgb(240, 236, 236);
+  border: 1px solid rgb(17, 14, 14);
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.calculator-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(17, 14, 14);
+  background: rgb(230, 182, 128);
+  margin: 3px 3px 3px 3px;
+  font-size: 24px;
+  line-height: 40px;
+}
