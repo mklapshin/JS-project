@@ -174,3 +174,22 @@ stopButton.addEventListener("click", () => {
   result = 0;
   document.querySelector(".calculatorScreen").innerHTML = '';
 });
+
+deleteButton.addEventListener("click", () => {
+ 
+  if (operation % 2 == 1) {
+
+    number1 = parseInt(number1 / 10);
+    if (number1 == 0) {
+      number1='';
+    }
+    document.querySelector(".calculatorScreen").innerHTML = number1;
+  } else {
+    number2 = parseInt(number2 / 10);
+    if (number2 == 0) {
+      number2='';
+    }
+  document.querySelector(".calculatorScreen").innerHTML = number2;
+  }
+
+});
