@@ -34,8 +34,8 @@ function init() {
             console.log(counter);
         } else {
             startButton.innerHTML = "START";
-           // let currentTime = time;
-           // setTimeout(() => { clearInterval(countTime); console.log('stop'); }, 5000);
+            // let currentTime = time;
+            // setTimeout(() => { clearInterval(countTime); console.log('stop'); }, 5000);
             // timeCountdown.innerHTML = currentTime;
             counter ++;
             interval = 800000;
