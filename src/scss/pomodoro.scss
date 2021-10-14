@@ -35,11 +35,22 @@
   background-color: rgb(110, 10, 10);
  }
 
+ .pomodoro-screen-settings-1 {
+  display: flex;
+  justify-content: space-around;;
+}
+
+.pomodoro-screen-settings-2 {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 20px 0;
+}
+
 .pomodoro-screen {
   text-align: center;
   font-size: 80px;
   line-height: 60px;
-  margin: 30px 0 50px 0;
+  margin: 10px 0 10px 0;
   color: rgb(241, 234, 234);
   height: 55px;
 }
