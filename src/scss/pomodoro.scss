@@ -29,21 +29,61 @@
  border: none;
  height: 30px;
  margin: 10px 0 0 0;
+ cursor: pointer;
 }
 
+.pomodoro-menu-button:hover {
+  background-color: rgb(150, 114, 114);
+ }
+ 
 .pomodoro-menu-button:first-child {
   background-color: rgb(110, 10, 10);
  }
 
+ .pomodoro-menu-button:first-child:hover {
+  background-color:  rgb(150, 114, 114);
+ }
+
  .pomodoro-screen-settings-1 {
+  width: 310px;
   display: flex;
-  justify-content: space-around;;
+  justify-content: space-around;
+  font-size: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+}
+
+.pomodoro-screen-settings-1-hours {
+  cursor: pointer;
+}
+
+.pomodoro-screen-settings-1-minutes {
+  cursor: pointer;
+}
+
+.pomodoro-screen-settings-1-seconds {
+  cursor: pointer;
 }
 
 .pomodoro-screen-settings-2 {
+  width: 310px;
   display: flex;
   justify-content: space-around;
-  margin: 0 0 20px 0;
+  margin: 0 auto 20px auto;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.pomodoro-screen-settings-2-hours {
+  cursor: pointer;
+}
+
+.pomodoro-screen-settings-2-minutes {
+  cursor: pointer;
+}
+
+.pomodoro-screen-settings-2-seconds {
+  cursor: pointer;
 }
 
 .pomodoro-screen {
@@ -64,6 +104,7 @@
   padding: 9px 0 0 0;
   font-size: 20px;
   color: rgb(109, 13, 13);
+  cursor: pointer;
 }
 
 .pomodoro-work-time {
