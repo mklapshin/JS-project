@@ -1,14 +1,11 @@
     import sound from '../assets/sound.mp3';
 
-    let counter = 2;
+    let workStatus = true;
     let interval = 1000;
-    let flag = true;
     let time = 10;
-    let finishCounter = 999;
-    let counterBreak = 2;
-    let playMode1 = 1;
     const audio = new Audio();
     audio.src = `${sound}`
+    let flag = 0;
     
     const audioStartFunc = () => {
             audio.play();     
@@ -30,11 +27,9 @@
     timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
  
    shortBreak.addEventListener("click", () => {
-    if (counter % 2 != 0) {
-        counter ++; 
-        console.log(counter);
+    if (workStatus == false) {
+        workStatus = true; 
     }
-    console.log(counter);
     time = 300;
     let hours = Math.floor(time/3600);
     let minutes = Math.floor((time - hours * 3600)/ 60);
@@ -49,9 +44,8 @@
 });   
 
     mainPomodoro.addEventListener("click", () => {
-    if (counter % 2 != 0) {
-        counter ++; 
-        console.log(counter);
+    if (workStatus == false) {
+        workStatus = true;; 
     }
     time = 600;
     interval = 80000;
@@ -68,7 +62,7 @@
 });  
 
 
-    function countTime (){
+    function countTime () {
      
         if (time >= 0) {
 
@@ -79,39 +73,39 @@
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0"+ seconds : seconds;
             timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;   
-            if(counter % 2 != 0) {
+            if(workStatus == false) {
                 time--;   
             } 
         } else {
             audioStopFunc();
             timeCountdown.innerHTML = 'Time out!';
-            counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
+            workStatus = false;
+         //   flag = 1;
         }
     }
 
     startButton.addEventListener("click", () => {
-        if (counter % 2 == 0) {
+        if (time == -1) {
+            time = 100;
+            workStatus = false;
+            audioStartFunc();
+            clearInterval(countTime);
+            interval = 30000;
+            setInterval(countTime, interval);
+            startButton.innerHTML = "STOP";
+        }
+        else if (workStatus == true) {
             audioStartFunc();
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
-            counter ++;
-            console.log(counter);
-         } else if (counter == finishCounter) {
-            time = 600;
-            counter = 2;
-            startButton.innerHTML = "STOP";
-            interval = 30000;
-            setInterval(countTime, interval);
-            interval = 800000;
-            counter ++;
-            console.log(counter);
+            workStatus = false;
          } else {
             audioStopFunc();
             startButton.innerHTML = "START";
-            counter ++;
+            workStatus = true;
             interval = 800000;
-            console.log(counter);
+            console.log(time);
         }
     });
 
@@ -161,7 +155,7 @@
          seconds = seconds < 10 ? "0"+ seconds : seconds;
          timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
         }
-        }); 
+        });
 
       increaseSeconds.addEventListener("click", () => {
         time = time + 1;
