@@ -1,17 +1,17 @@
 .pomodoro {
-  width: 400px;
-  height: 500px;
+  width: 25rem;
+  height: 31.25rem;
   margin: 0 auto;
 }
 
 .pomodoro-header {
-  margin: 30px 0 30px 0;
+  margin: 1.875rem 0 1.875rem 0;
   text-align: center;
 }
 
 .pomodoro-container {
-  width: 400px;
-  height: 300px;
+  width: 25rem;
+  height: 18.75rem;
   margin: 0 auto;
   background-color: rgb(240, 17, 17);
 }
@@ -19,16 +19,16 @@
 .pomodoro-menu {
   display: flex;
   justify-content: center;
-  margin: 50px 0 0 0;
-  height: 50px;
+  margin: 3.125rem 0 0 0;
+  height: 3.125rem;
 }
 
 .pomodoro-menu-button {
  background-color: rgb(240, 17, 17);
  color: #ffffff;
  border: none;
- height: 30px;
- margin: 10px 0 0 0;
+ height: 1.875rem;
+ margin: 0.625rem 0 0 0;
  cursor: pointer;
 }
 
@@ -45,11 +45,11 @@
  }
 
  .pomodoro-screen-settings-1 {
-  width: 310px;
+  width: 19.375rem;
   display: flex;
   justify-content: space-around;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 1.875rem;
+  line-height: 1.875rem;
   margin: 0 auto;
 }
 
@@ -66,12 +66,12 @@
 }
 
 .pomodoro-screen-settings-2 {
-  width: 310px;
+  width: 19.375rem;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto 20px auto;
-  font-size: 30px;
-  line-height: 30px;
+  margin: 0 auto 1.25rem auto;
+  font-size: 1.875rem;
+  line-height: 1.875rem;
 }
 
 .pomodoro-screen-settings-2-hours {
@@ -88,30 +88,30 @@
 
 .pomodoro-screen {
   text-align: center;
-  font-size: 80px;
-  line-height: 60px;
-  margin: 10px 0 10px 0;
+  font-size: 5rem;
+  line-height: 3.75rem;
+  margin: 0.625rem 0 0.625rem 0;
   color: rgb(241, 234, 234);
   height: 55px;
 }
 
 .pomodoro-start {
-  width: 150px;
-  height: 35px;
+  width: 9.375rem;
+  height: 2.1875rem;
   margin: 0 auto;
   background-color: #fff;
   text-align: center;
-  padding: 9px 0 0 0;
-  font-size: 20px;
+  padding: 0.5625rem 0 0 0;
+  font-size: 1.25rem;
   color: rgb(109, 13, 13);
   cursor: pointer;
 }
 
 .pomodoro-work-time {
-  height: 51px;
-  margin: 20px 0 0 0;
+  height: 3.1875rem;
+  margin: 1.25rem 0 0 0;
   background-color: rgb(175, 15, 15);
   color: #ffffff;
   text-align: center;
-  padding: 23px 0 0 0;
+  padding: 1.4375rem 0 0 0;
 }

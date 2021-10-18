@@ -1,6 +1,6 @@
 //function init() {
+    import sound from '../assets/sound.mp3';
 
-      
     let counter = 2;
     let interval = 1000;
     let flag = true;
@@ -77,6 +77,15 @@
                 time--;   
             } 
         } else {
+         //    var newAudio = document.createElement("div");
+       //      newAudio.innerHTML = "<audio src={sound}>";
+            
+            const audioStartFunc = () => {
+                const audio = new Audio();
+                audio.src = {sound}
+                audio.autoplay = true
+      }
+
             timeCountdown.innerHTML = 'Time out!';
             counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
