@@ -8,18 +8,13 @@
     let finishCounter = 999;
     let counterBreak = 2;
     let playMode1 = 1;
+    let d1 = 'start';
 
-function audioStartFunc(playMode) {
-    if (playMode == 1) {
-
-        let audio = new Audio();
-        audio.src = `${sound}`
-        audio.play();  
+    const audioStartFunc = (d1) => {
+            const audio = new Audio();
+            audio.src = `${sound}`
+            d1 == 'start' ? audio.play() : audio.pause();
     }
- else {
-     audio.stop();
- }
- }
 
 
 
@@ -91,10 +86,11 @@ function audioStartFunc(playMode) {
                 time--;   
             } 
         } else {
+            d1 = 'stop';
+            audioStartFunc(d1);
          //    var newAudio = document.createElement("div");
        //      newAudio.innerHTML = "<audio src={sound}>";
-            playMode1 = 2;
-            audioStartFunc(playMode1);
+         //   audioStartFunc();
             timeCountdown.innerHTML = 'Time out!';
             counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
@@ -104,7 +100,7 @@ function audioStartFunc(playMode) {
     }
 
     startButton.addEventListener("click", () => {
-      audioStartFunc(playMode1);
+      audioStartFunc(d1);
         if (counter % 2 == 0) {
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
