@@ -1,4 +1,3 @@
-//function init() {
     import sound from '../assets/sound.mp3';
 
     let counter = 2;
@@ -8,15 +7,16 @@
     let finishCounter = 999;
     let counterBreak = 2;
     let playMode1 = 1;
-    let d1 = 'start';
+    const audio = new Audio();
+    audio.src = `${sound}`
+    
+    const audioStartFunc = () => {
+            audio.play();     
+        }
 
-    const audioStartFunc = (d1) => {
-            const audio = new Audio();
-            audio.src = `${sound}`
-            d1 == 'start' ? audio.play() : audio.pause();
-    }
-
-
+    const audioStopFunc = () => {
+           audio.pause();     
+        }
 
     const timeCountdown = document.getElementById("demo");
     let hours = Math.floor(time/3600);
@@ -29,9 +29,6 @@
 
     timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
  
-
-   // time = prompt('Введите время в формате ЧЧ:ММ:СС')
-    
    shortBreak.addEventListener("click", () => {
     if (counter % 2 != 0) {
         counter ++; 
@@ -86,22 +83,16 @@
                 time--;   
             } 
         } else {
-            d1 = 'stop';
-            audioStartFunc(d1);
-         //    var newAudio = document.createElement("div");
-       //      newAudio.innerHTML = "<audio src={sound}>";
-         //   audioStartFunc();
+            audioStopFunc();
             timeCountdown.innerHTML = 'Time out!';
             counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
-           
-       //     time = 1500;
         }
     }
 
     startButton.addEventListener("click", () => {
-      audioStartFunc(d1);
         if (counter % 2 == 0) {
+            audioStartFunc();
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
             counter ++;
@@ -116,10 +107,8 @@
             counter ++;
             console.log(counter);
          } else {
+            audioStopFunc();
             startButton.innerHTML = "START";
-            // let currentTime = time;
-            // setTimeout(() => { clearInterval(countTime); console.log('stop'); }, 5000);
-            // timeCountdown.innerHTML = currentTime;
             counter ++;
             interval = 800000;
             console.log(counter);
@@ -196,11 +185,4 @@
          seconds = seconds < 10 ? "0"+ seconds : seconds;
          timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
         }
-        });  
-
-
-//   }
-  
-  
- // window.addEventListener('load', init);
-  
+        });
