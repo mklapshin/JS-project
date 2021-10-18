@@ -4,15 +4,24 @@
     let counter = 2;
     let interval = 1000;
     let flag = true;
-    let time = 600;
+    let time = 10;
     let finishCounter = 999;
     let counterBreak = 2;
+    let playMode1 = 1;
 
-const audioStartFunc = () => {
-    const audio = new Audio();
-    audio.src = `${sound}`
-    audio.autoplay = true
-}
+function audioStartFunc(playMode) {
+    if (playMode == 1) {
+
+        let audio = new Audio();
+        audio.src = `${sound}`
+        audio.play();  
+    }
+ else {
+     audio.stop();
+ }
+ }
+
+
 
     const timeCountdown = document.getElementById("demo");
     let hours = Math.floor(time/3600);
@@ -84,19 +93,18 @@ const audioStartFunc = () => {
         } else {
          //    var newAudio = document.createElement("div");
        //      newAudio.innerHTML = "<audio src={sound}>";
-            
-   
-
+            playMode1 = 2;
+            audioStartFunc(playMode1);
             timeCountdown.innerHTML = 'Time out!';
             counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
-            audioStartFunc();
+           
        //     time = 1500;
         }
     }
 
     startButton.addEventListener("click", () => {
-        audioStartFunc();
+      audioStartFunc(playMode1);
         if (counter % 2 == 0) {
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
