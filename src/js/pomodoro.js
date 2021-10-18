@@ -74,6 +74,7 @@
             timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;   
             if(workStatus == false) {
                 time--;   
+                clearInterval(countTime);
             } 
         } else {
             audioStopFunc();
