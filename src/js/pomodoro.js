@@ -8,6 +8,11 @@
     let finishCounter = 999;
     let counterBreak = 2;
 
+const audioStartFunc = () => {
+    const audio = new Audio();
+    audio.src = `${sound}`
+    audio.autoplay = true
+}
 
     const timeCountdown = document.getElementById("demo");
     let hours = Math.floor(time/3600);
@@ -80,20 +85,18 @@
          //    var newAudio = document.createElement("div");
        //      newAudio.innerHTML = "<audio src={sound}>";
             
-            const audioStartFunc = () => {
-                const audio = new Audio();
-                audio.src = {sound}
-                audio.autoplay = true
-      }
+   
 
             timeCountdown.innerHTML = 'Time out!';
             counter = finishCounter;
             startButton.innerHTML = "NEW STEP";
+            audioStartFunc();
        //     time = 1500;
         }
     }
 
     startButton.addEventListener("click", () => {
+        audioStartFunc();
         if (counter % 2 == 0) {
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
