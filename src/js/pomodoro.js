@@ -5,7 +5,6 @@
     let time = 10;
     const audio = new Audio();
     audio.src = `${sound}`
-    let flag = 0;
     
     const audioStartFunc = () => {
             audio.play();     
@@ -81,7 +80,6 @@
             timeCountdown.innerHTML = 'Time out!';
             startButton.innerHTML = "NEW STEP";
             workStatus = false;
-         //   flag = 1;
         }
     }
 
@@ -91,11 +89,9 @@
             workStatus = false;
             audioStartFunc();
             clearInterval(countTime);
-            interval = 30000;
-            setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
         }
-        else if (workStatus == true) {
+         if (workStatus == true) {
             audioStartFunc();
             setInterval(countTime, interval);
             startButton.innerHTML = "STOP";
