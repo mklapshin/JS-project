@@ -5,7 +5,6 @@ let interval;
 let time = 10;
 const audio = new Audio();
 audio.src = `${sound}`
-let timeInterval = 1000;
     
 const audioStartFunc = () => {
   audio.play();     
@@ -48,7 +47,7 @@ mainPomodoro.addEventListener("click", () => {
     workStatus = true;; 
   }
   time = 600;
-  timeInterval = 80000;
+ // timeInterval = 80000;
   let hours = Math.floor(time/3600);
   let minutes = Math.floor((time - hours * 3600)/ 60);
   let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
@@ -70,15 +69,14 @@ function countTime () {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0"+ seconds : seconds;
     timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;   
-    if(workStatus == false) {
-      time--;   
-   //   clearInterval(countTime);
-    } 
+    time--; 
+  
   } else {
   audioStopFunc();
   timeCountdown.innerHTML = 'Time out!';
   startButton.innerHTML = "NEW STEP";
   workStatus = false;
+  clearInterval(interval);
   }
 }
 
@@ -92,14 +90,14 @@ startButton.addEventListener("click", () => {
   }
   if (workStatus == true) {
     audioStartFunc();
-    interval = setInterval(countTime, timeInterval);
+    interval = setInterval(countTime, 1000);
     startButton.innerHTML = "STOP";
     workStatus = false;
   } else {
     audioStopFunc();
+    clearInterval(interval);
     startButton.innerHTML = "START";
     workStatus = true;
-    timeInterval = 800000;
     console.log(time);
   }
 });
