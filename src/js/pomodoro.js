@@ -14,17 +14,23 @@ const audioStopFunc = () => {
   audio.pause();     
 }
 
-const timeCountdown = document.getElementById("demo");
-let hours = Math.floor(time/3600);
-let minutes = Math.floor((time - hours * 3600)/ 60);
-let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-    
-hours = hours <10 ? "0" + hours : hours;
-minutes = minutes < 10 ? "0" + minutes : minutes;
-seconds = seconds < 10 ? "0"+ seconds : seconds;
+function printOnScreenTine(time)  {
+  let hours = Math.floor(time/3600);
+  let minutes = Math.floor((time - hours * 3600)/ 60);
+  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
+      
+  hours = hours <10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0"+ seconds : seconds;
+  
+  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+   
+  }
 
-timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
- 
+const timeCountdown = document.getElementById("demo");
+
+  printOnScreenTine(time);
+
 shortBreak.addEventListener("click", () => {
   audioStopFunc();
   clearInterval(interval);
@@ -51,14 +57,7 @@ mainPomodoro.addEventListener("click", () => {
     workStatus = true;; 
   }
   time = 600;
- // timeInterval = 80000;
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-  hours = hours <10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0"+ seconds : seconds;
-  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
+  printOnScreenTine(time);  
   startButton.innerHTML = "START";
   shortBreak.style.backgroundColor = 'rgb(240, 17, 17)';
   mainPomodoro.style.backgroundColor = ' rgb(110, 10, 10)';
@@ -66,13 +65,8 @@ mainPomodoro.addEventListener("click", () => {
 
 function countTime () {
   if (time >= 0) {
-    let hours = Math.floor(time/3600);
-    let minutes = Math.floor((time - hours * 3600)/ 60);
-    let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-    hours = hours <10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0"+ seconds : seconds;
-    timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;   
+    printOnScreenTine(time);
+
     time--; 
   
   } else {
@@ -107,73 +101,37 @@ startButton.addEventListener("click", () => {
 });
 
 increaseHours.addEventListener("click", () => {
-  time = time + 3600;
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-  hours = hours <10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0"+ seconds : seconds;
-  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+  time += 3600;
+  printOnScreenTine(time);
 });
 
 decreaseHours.addEventListener("click", () => {
   if (time > 3600) {
-    time = time - 3600;
-    let hours = Math.floor(time/3600);
-    let minutes = Math.floor((time - hours * 3600)/ 60);
-    let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-    hours = hours <10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0"+ seconds : seconds;
-    timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
+    time -= 3600;
+    printOnScreenTine(time);    
   }
 });
  
 increaseMinutes.addEventListener("click", () => {
-  time = time + 60;
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-  hours = hours <10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0"+ seconds : seconds;
-  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+  time += 60;
+  printOnScreenTine(time);
 });
  
 decreaseMinutes.addEventListener("click", () => {
   if (time > 59) {
-    time = time - 60;
-    let hours = Math.floor(time/3600);
-    let minutes = Math.floor((time - hours * 3600)/ 60);
-    let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-    hours = hours <10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0"+ seconds : seconds;
-    timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
+    time -= 60;
+    printOnScreenTine(time);
   }
 });
 
 increaseSeconds.addEventListener("click", () => {
-  time = time + 1;
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-  hours = hours <10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0"+ seconds : seconds;
-  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
+  time += 1;
+  printOnScreenTine(time);
 });
  
 decreaseSeconds.addEventListener("click", () => {
   if (time > 0) {
-  time = time - 1;
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-  hours = hours <10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0"+ seconds : seconds;
-  timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;    
+  time -= 1;
+  printOnScreenTine(time);
   }
 });
