@@ -26,6 +26,8 @@ seconds = seconds < 10 ? "0"+ seconds : seconds;
 timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
  
 shortBreak.addEventListener("click", () => {
+  audioStopFunc();
+  clearInterval(interval);
   if (workStatus == false) {
     workStatus = true; 
   }
@@ -43,6 +45,8 @@ shortBreak.addEventListener("click", () => {
 });   
 
 mainPomodoro.addEventListener("click", () => {
+  audioStopFunc();
+  clearInterval(interval);
   if (workStatus == false) {
     workStatus = true;; 
   }
