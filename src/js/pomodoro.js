@@ -96,7 +96,6 @@ startButton.addEventListener("click", () => {
     clearInterval(interval);
     startButton.innerHTML = "START";
     workStatus = true;
-    console.log(time);
   }
 });
 
