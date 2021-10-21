@@ -36,9 +36,14 @@ module.exports = {
   ],
   module: {
     rules: [
+      
       {
         test: /\.html$/,
         loader: 'html-loader',
+      },
+      {
+        test: /.mp3$/,
+        loader: 'file-loader'
       },
       {
         test: /\.css$/i,
