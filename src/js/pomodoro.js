@@ -17,20 +17,15 @@ const audioStopFunc = () => {
 function printOnScreenTine(time)  {
   let hours = Math.floor(time/3600);
   let minutes = Math.floor((time - hours * 3600)/ 60);
-  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);
-      
+  let seconds = Math.floor((time - hours * 3600 - minutes * 60) % 60);  
   hours = hours <10 ? "0" + hours : hours;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0"+ seconds : seconds;
-  
   timeCountdown.innerHTML = `${hours}:${minutes}:${seconds}`;
-   
   }
 
 const timeCountdown = document.getElementById("demo");
-
-  printOnScreenTine(time);
-
+printOnScreenTine(time);
 shortBreak.addEventListener("click", () => {
   audioStopFunc();
   clearInterval(interval);
@@ -66,9 +61,7 @@ mainPomodoro.addEventListener("click", () => {
 function countTime () {
   if (time >= 0) {
     printOnScreenTine(time);
-
     time--; 
-  
   } else {
   audioStopFunc();
   timeCountdown.innerHTML = 'Time out!';

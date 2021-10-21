@@ -3,3 +3,4 @@ import "../scss/style.scss";
 import "./courusel";
 import "./calculator";
 import "./pomodoro";
+import "./labirint";
