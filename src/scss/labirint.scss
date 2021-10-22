@@ -1,9 +1,11 @@
+
+
 .game {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     height: 100%;
-    background-color: #fff;
+		background-color: white;
 }
 
 .score {
@@ -36,13 +38,16 @@
     border: rgb(247 247 247) 1px solid;
 }
 
- .snake::before {
-    content: "\1F600";
+ .snake {
+    background-image: url(../img/smile.png);
+    background-size: cover;
 }
 
-.food::before {
-    content: "\1F3C1";
- }
+.food {
+    background-image: url(../img/flag.jpg);
+    background-size: cover;
+}
+ 
 
 .board .cell.problems {
     background-color: rgb(98, 22, 22);
