@@ -1,4 +1,3 @@
-
 .game {
     display: flex;
     flex-flow: column nowrap;
@@ -37,16 +36,20 @@
     border: rgb(247 247 247) 1px solid;
 }
 
-.board .cell.snake {
-    background-color: rgb(36, 156, 36);
+ .snake::before {
+    content: "\1F600";
 }
 
-.board .cell.food {
+.food::before {
+    content: "\1F3C1";
+ }
+
+.board .cell.problems {
     background-color: rgb(98, 22, 22);
 }
 
 .game.started .board {
-    border-color: rgb(82, 205, 50);
+  border-color: rgb(82, 205, 50);
 }
 
 .game.paused .board {

@@ -26,6 +26,7 @@ const game = {
         board.render();
         snake.render();
         food.render();
+        problems.render();
     },
     pause() {
         game.setGameStatus(GAME_STATUS_PAUSED);
@@ -75,6 +76,7 @@ const game = {
         };
 
         const foundFood = food.foundPosition(nextPosition);
+        const foundProblems = problems.foundPositionProblem(nextPosition);
 
         if (foundFood !== -1) {
            // snake.setPosition(nextPosition, false);
@@ -89,6 +91,13 @@ const game = {
             snake.setPosition(nextPosition);
         }
         snake.render();
+
+        if (foundProblems !== -1) {
+            // snake.setPosition(nextPosition, false);
+             alert('Вы проиграли!')
+             game.stop();
+             return;
+         }
     },
    
     setGameStatus(status) {
@@ -228,13 +237,56 @@ const food = {
     },
 
     removeItem(foundPosition) {
+       this.items.splice(foundPosition, 1);
        alert('Поздравляем! Вы выиграли!')
     },
+
+    generateItem() {
+        const newItem = {
+            top: getRandomNumber(0, config.size - 1),
+            left: getRandomNumber(0, config.size - 1)
+        };
+
+        this.items.push(newItem);
+    },
+
 
     render() {
         cells.renderItems(this.items, 'food');
     }
 };
+
+const problems = {
+    itemsProblem: [{
+          top: 2,
+          left: 2
+      }],
+      foundPositionProblem(snakePosition) {
+          const comparerFunctionProblem = function (item) {
+              return item.top === snakePosition.top && item.left === snakePosition.left;
+          };
+           return this.itemsProblem.findIndex(comparerFunctionProblem);
+      },
+  
+      removeProblem(foundPosition) {
+        //  this.items.splice(foundPosition, 1);
+         alert('Вы проиграли!')
+      },
+  
+      generateProblem() {
+          const newProblem = {
+              top: getRandomNumber(0, config.size - 2),
+              left: getRandomNumber(0, config.size - 2)
+          };
+  
+          this.itemsProblem.push(newProblem);
+      },
+  
+  
+      render() {
+          cells.renderItems(this.itemsProblem, 'problems');
+      }
+  };
 
 function init() {
     const startButton = document.getElementById('button-start');
