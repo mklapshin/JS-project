@@ -44,7 +44,15 @@ const game = {
                 top: 0,
                 left: 0
             }
-        ]
+        ],
+        food.items = [{
+            top: 4,
+            left: 4
+        }]
+        problems.itemsProblem = [{
+            top: 2,
+            left: 2
+        }]
     },
     
     move(event) {
@@ -86,7 +94,8 @@ const game = {
             game.score += 1;
             const scoreValueElement = game.getScoreValueElement();
             scoreValueElement.innerHTML = game.score;
-
+            problems.generateProblem();
+            problems.render();
         } else {
             snake.setPosition(nextPosition);
         }
@@ -275,8 +284,8 @@ const problems = {
   
       generateProblem() {
           const newProblem = {
-              top: getRandomNumber(0, config.size - 2),
-              left: getRandomNumber(0, config.size - 2)
+              top: getRandomNumber(0, config.size - 1),
+              left: getRandomNumber(0, config.size - 1)
           };
   
           this.itemsProblem.push(newProblem);
