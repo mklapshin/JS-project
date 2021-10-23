@@ -191,6 +191,12 @@ const snake = {
     return this.parts.findIndex(comparerFunction);
   },
 
+  snakeGameFinish() {
+    alert('Вы проиграли');
+    game.stop();
+    game.start();
+  },
+
   getNextPosition() {
     const position = {
       ...this.parts[this.parts.length - 1]
@@ -198,42 +204,34 @@ const snake = {
     console.log(position);
 
     switch (this.direction) {
-
       case SNAKE_DIRECTION_UP:
         if (position.top == 0) {
-          alert('Вы проиграли');
-          game.stop();
-          game.start();
+          snake.snakeGameFinish();
+          // alert('Вы проиграли');
+          // game.stop();
+          //game.start();
           // вынести 3 строчки в отдельную функцию
           return;
         }
         position.top -= 1;
-
-
         break;
       case SNAKE_DIRECTION_DOWN:
         if (position.top == 4) {
-          alert('Вы проиграли');
-          game.stop();
-          game.start();
+          snake.snakeGameFinish();
           return;
         }
         position.top += 1;
         break;
       case SNAKE_DIRECTION_LEFT:
         if (position.left == 0) {
-          alert('Вы проиграли');
-          game.stop();
-          game.start();
+          snake.snakeGameFinish();
           return;
         }
         position.left -= 1;
         break;
       case SNAKE_DIRECTION_RIGHT:
         if (position.left == 4) {
-          alert('Вы проиграли!');
-          game.stop();
-          game.start();
+          snake.snakeGameFinish();
           return;
         }
         position.left += 1;
@@ -315,10 +313,25 @@ const problems = {
   },
 
   generateProblem() {
-    const newProblem = {
+    let newProblem = {
       top: getRandomNumber(0, config.size - 1),
       left: getRandomNumber(0, config.size - 1)
     };
+    while (newProblem.top == food.items.top & newProblem.meft == food.items.left) {
+      console.log('newProblem.top1111111', newProblem.top);
+      console.log('food.items.top', food.items.top);
+      newProblem.top = getRandomNumber(0, config.size - 1);
+    };
+    // while (newProblem.top != food.items.top) {
+    //   console.log('newProblem.top1111111', newProblem.top);
+    //   console.log('food.items.top', food.items.top);
+    //   newProblem.top = getRandomNumber(0, config.size - 1);
+    // };
+    // while (newProblem.left == food.items.left) {
+    //   console.log('newProblem.left111111111', newProblem.left);
+    //   console.log('food.items.left', food.items.left);
+    //   newProblem.left = getRandomNumber(0, config.size - 1);
+    // }
 
     this.itemsProblem.push(newProblem);
   },
