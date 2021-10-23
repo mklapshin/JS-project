@@ -317,10 +317,11 @@ const problems = {
       top: getRandomNumber(0, config.size - 1),
       left: getRandomNumber(0, config.size - 1)
     };
-    while (newProblem.top == food.items.top & newProblem.meft == food.items.left) {
+    while (newProblem.top == food.items.top & newProblem.left == food.items.left) {
       console.log('newProblem.top1111111', newProblem.top);
       console.log('food.items.top', food.items.top);
       newProblem.top = getRandomNumber(0, config.size - 1);
+      newProblem.left = getRandomNumber(0, config.size - 1);
     };
     // while (newProblem.top != food.items.top) {
     //   console.log('newProblem.top1111111', newProblem.top);
