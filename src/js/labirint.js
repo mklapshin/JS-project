@@ -101,6 +101,7 @@ const game = {
     } else {
       //       let hf = snake.foundPosition(nextPosition);
       snake.setPosition(nextPosition);
+
       //        alert(hf);
     }
     snake.render();
@@ -167,7 +168,16 @@ const cells = {
       const cell = document.querySelector(`.cell[data-top="${coordinate.top}"][data-left="${coordinate.left}"]`);
       cell.classList.add(className);
     }
-  }
+  },
+
+  checkGetElements() {
+    return document.getElementsByClassName('problems');
+  },
+
+  // checkPosition() {
+  //   const cellsCheck = this.checkGetElements();
+  //   console.log(cellChecks);
+  // },
 };
 
 const snake = {
@@ -286,11 +296,16 @@ const food = {
       top: getRandomNumber(0, config.size - 1),
       left: getRandomNumber(0, config.size - 1)
     };
-
+    this.items.splice(0, 2);
     this.items.push(newItem);
+    let foodVariable1 = newItem.top;
+    let foodVariable2 = newItem.left;
   },
 
+
+
   render() {
+
     cells.renderItems(this.items, 'food');
   }
 };
@@ -317,12 +332,18 @@ const problems = {
       top: getRandomNumber(0, config.size - 1),
       left: getRandomNumber(0, config.size - 1)
     };
-    while (newProblem.top == food.items.top & newProblem.left == food.items.left) {
-      console.log('newProblem.top1111111', newProblem.top);
-      console.log('food.items.top', food.items.top);
-      newProblem.top = getRandomNumber(0, config.size - 1);
-      newProblem.left = getRandomNumber(0, config.size - 1);
-    };
+
+    // if (newProblem.top == food.foodVariable1) {
+    //   if (newProblem.left == food.foodVariable2) {
+    //     while (newProblem.top == food.a1 & newProblem.left == food.a2) {
+    //       console.log('newProblem.top', newProblem.top);
+    //       console.log('food.items.top', food.items.top);
+    //       newProblem.top = getRandomNumber(0, config.size - 1);
+    //       newProblem.left = getRandomNumber(0, config.size - 1);
+    //     };
+    //   }
+    // }
+
     // while (newProblem.top != food.items.top) {
     //   console.log('newProblem.top1111111', newProblem.top);
     //   console.log('food.items.top', food.items.top);
@@ -333,9 +354,12 @@ const problems = {
     //   console.log('food.items.left', food.items.left);
     //   newProblem.left = getRandomNumber(0, config.size - 1);
     // }
-
     this.itemsProblem.push(newProblem);
   },
+
+
+
+
 
 
   render() {
