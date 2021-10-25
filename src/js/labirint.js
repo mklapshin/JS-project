@@ -90,14 +90,15 @@ const game = {
 
     if (foundFood !== -1) {
       // snake.setPosition(nextPosition, false);
-      food.removeItem(foundFood);
-      food.generateItem();
-      food.render();
       game.score += 1;
       const scoreValueElement = game.getScoreValueElement();
       scoreValueElement.innerHTML = game.score;
       problems.generateProblem();
       problems.render();
+      food.removeItem(foundFood);
+      food.generateItem();
+      // food.checkClass();
+      food.render();
     } else {
       //       let hf = snake.foundPosition(nextPosition);
       snake.setPosition(nextPosition);
@@ -294,15 +295,19 @@ const food = {
   generateItem() {
     const newItem = {
       top: getRandomNumber(0, config.size - 1),
-      left: getRandomNumber(0, config.size - 1)
+      left: getRandomNumber(0, config.size - 1),
+
     };
+
     this.items.splice(0, 2);
     this.items.push(newItem);
     let foodVariable1 = newItem.top;
     let foodVariable2 = newItem.left;
   },
 
-
+  checkClass() {
+    return document.newItem.getElementsByClassName('problems') ? this.generateItem() : this.render();
+  },
 
   render() {
 
