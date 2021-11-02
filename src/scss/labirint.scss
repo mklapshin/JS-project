@@ -4,10 +4,10 @@
     align-items: center;
     height: 100%;
 		background-color: white;
-		
 }
 
 .score {
+	margin-top: 30px;
 	font-size: 50px;
 	color: rgb(200, 200, 200);
 }
@@ -18,7 +18,7 @@ grid-template-rows: repeat(5, 1fr);
 grid-template-columns: repeat(5, 1fr);
 height: 600px;
 width: 600px;
-border: rgb(200, 200, 200) 1px solid;
+border: rgb(19, 17, 17) 1px solid;
 }
 
 .game.started .score {
@@ -34,7 +34,7 @@ border: rgb(200, 200, 200) 1px solid;
 }
 
 .board .cell {
-	border: rgb(247 247 247) 1px solid;
+	border: rgb(19, 17, 17) 1px solid;
 }
 
 .snake {
