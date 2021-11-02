@@ -20,10 +20,9 @@ numberCell + 1  - при клике вправо, но сначала прове
 const config = {
   size: 5
 };
+const board = document.getElementById('board');
 
-
-function render() {
-  const board = document.getElementById('board');
+function render(board) {
 
   for (let i = 0; i < config.size ** 2; i++) {
     const cell = document.createElement('div');
@@ -33,13 +32,6 @@ function render() {
   }
 };
 
-buttonStart.addEventListener("click", () => {
-  render();
-  const timeCountdown = document.getElementById("scoreValue");
-  timeCountdown.innerHTML = 'Счет: 0';
-});
-
-
 function generateItem() {
   const newItem = getRandomNumber(0, config.size * config.size - 1)
 }
@@ -48,24 +40,26 @@ function generateProblem() {
   let newProblem = getRandomNumber(0, config.size * config.size - 1)
 };
 
+function getRandomNumber(min, max) {
+  return Math.trunc(Math.random() * (max - min) + min);
+}
 
-// function renderItems(recentCoordinate, className) {
-//   const cells = document.getElementsByClassName('cell');
+function renderItems(recentCoordinate, className) {
+  const cells = document.getElementsByClassName('cell');
 
-//   for (let cell of cells) {
-//     cell.classList.remove(className);
-//   }
-//   const newCell = document.querySelector(`.cell[data-coordinate="${recentCoordinate}"]`);
-//   newCell.classList.add(className);
-// }
+  for (let cell of cells) {
+    cell.classList.remove(className);
+  }
+  const newCell = document.querySelector(`.cell[data-coordinate="${recentCoordinate}"]`);
+  newCell.classList.add(className);
+}
 
-
-// renderItems(2, 'food');
-
-
-
-
-
+buttonStart.addEventListener("click", () => {
+  render(board);
+  const timeCountdown = document.getElementById("scoreValue");
+  timeCountdown.innerHTML = 'Счет: 0';
+  renderItems(2, 'food');
+});
 
 
 
