@@ -44,23 +44,45 @@ function getRandomNumber(min, max) {
   return Math.trunc(Math.random() * (max - min) + min);
 }
 
-function renderItems(recentCoordinate, className) {
-  const cells = document.getElementsByClassName('cell');
+function renderSmile() {
+  let smile = 0;
+  const newCellSmile = document.querySelector(`.cell[data-coordinate="${smile}"]`);
+  newCellSmile.className = "smile";
+};
 
-  for (let cell of cells) {
-    cell.classList.remove(className);
+function renderFoodAndProblems() {
+  let food = getRandomNumber(0, config.size ** 2);
+  const newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
+  newCellFood.className = "food";
+  let problems = getRandomNumber(0, config.size ** 2);
+  if (problems == food) {
+    while (problems == food) {
+      problems = getRandomNumber(0, config.size ** 2);
+    }
   }
-  const newCell = document.querySelector(`.cell[data-coordinate="${recentCoordinate}"]`);
-  newCell.classList.add(className);
-}
+  const newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
+  newCellProblems.className = "problems";
+};
 
 buttonStart.addEventListener("click", () => {
   render(board);
   const timeCountdown = document.getElementById("scoreValue");
   timeCountdown.innerHTML = 'Счет: 0';
-  renderItems(2, 'food');
+  renderSmile();
+  renderFoodAndProblems();
 });
 
+
+
+  //   function renderItems(recentCoordinate, className) {
+  //   const cells = document.getElementsByClassName('cell');
+
+  //   for (let cell of cells) {
+  //     cell.classList.remove(className);
+  //   }
+  //   const newCell = document.querySelector(`.cell[data-coordinate="${recentCoordinate}"]`);
+  //   newCell.classList.add(className);
+  // };
 
 
 //   move(event) {

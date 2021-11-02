@@ -43,12 +43,16 @@ border: rgb(19, 17, 17) 1px solid;
 }
 
 .food {
-	background-image: url(../img/flag.jpg);
-	background-size: cover;
+	background-color: rgb(9, 139, 38);
 }
 
+.smile {
+	background-image: url(../img/smile1.png);
+	background-size: cover;
+	border: rgb(19, 17, 17) 1px solid;
+}
 
-.board .cell.problems {
+.problems {
 	background-color: rgb(98, 22, 22);
 }
 
