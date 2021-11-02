@@ -21,6 +21,7 @@ const config = {
   size: 5
 };
 const board = document.getElementById('board');
+let smilePosition = 0;
 
 function render(board) {
 
@@ -51,13 +52,13 @@ function renderSmile() {
 };
 
 function renderFoodAndProblems() {
-  let food = getRandomNumber(0, config.size ** 2);
+  let food = getRandomNumber(0, config.size ** 2 - 1);
   const newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
   newCellFood.className = "food";
-  let problems = getRandomNumber(0, config.size ** 2);
+  let problems = getRandomNumber(0, config.size ** 2 - 1);
   if (problems == food) {
     while (problems == food) {
-      problems = getRandomNumber(0, config.size ** 2);
+      problems = getRandomNumber(0, config.size ** 2 - 1);
     }
   }
   const newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
@@ -73,6 +74,24 @@ buttonStart.addEventListener("click", () => {
 });
 
 
+document.addEventListener('keydown', function (event) {
+
+  if (event.code == 'ArrowUp') {
+    smilePosition -= 5;
+  } else if (event.code == 'ArrowDown') {
+    smilePosition += 5;
+  } else if (event.code == 'ArrowRight') {
+    smilePosition++;
+  } else if (event.code == 'ArrowLeft') {
+    smilePosition--;
+  }
+  let newPosition = smilePosition;
+  const newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${newPosition}"]`);
+  newCellSmilePosition.className = "smile";
+});
+
+
+
 
   //   function renderItems(recentCoordinate, className) {
   //   const cells = document.getElementsByClassName('cell');
@@ -85,22 +104,4 @@ buttonStart.addEventListener("click", () => {
   // };
 
 
-//   move(event) {
-//     let direction = null;
-//     switch (event.keyCode) {
-//       case 38:
-//         direction = SNAKE_DIRECTION_UP;
-//         break;
-//       case 40:
-//         direction = SNAKE_DIRECTION_DOWN;
-//         break;
-//       case 37:
-//         direction = SNAKE_DIRECTION_LEFT;
-//         break;
-//       case 39:
-//         direction = SNAKE_DIRECTION_RIGHT;
-//         break;
-//       default:
-//         return;
-//     }
 
