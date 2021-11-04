@@ -21,11 +21,11 @@ const config = {
   size: 5
 };
 const board = document.getElementById('board');
-let smilePosition = 0;
+let smilePosition = 1;
 
 function render(board) {
 
-  for (let i = 0; i < config.size ** 2; i++) {
+  for (let i = 1; i <= config.size ** 2; i++) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
     cell.dataset.coordinate = i;
@@ -34,11 +34,11 @@ function render(board) {
 };
 
 function generateItem() {
-  const newItem = getRandomNumber(0, config.size * config.size - 1)
+  const newItem = getRandomNumber(1, config.size * config.size)
 }
 
 function generateProblem() {
-  let newProblem = getRandomNumber(0, config.size * config.size - 1)
+  let newProblem = getRandomNumber(1, config.size * config.size)
 };
 
 function getRandomNumber(min, max) {
@@ -46,19 +46,19 @@ function getRandomNumber(min, max) {
 }
 
 function renderSmile() {
-  let smile = 0;
+  let smile = 1;
   const newCellSmile = document.querySelector(`.cell[data-coordinate="${smile}"]`);
   newCellSmile.className = "smile";
 };
 
 function renderFoodAndProblems() {
-  let food = getRandomNumber(0, config.size ** 2 - 1);
+  let food = getRandomNumber(1, config.size ** 2);
   const newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
   newCellFood.className = "food";
-  let problems = getRandomNumber(0, config.size ** 2 - 1);
+  let problems = getRandomNumber(1, config.size ** 2);
   if (problems == food) {
     while (problems == food) {
-      problems = getRandomNumber(0, config.size ** 2 - 1);
+      problems = getRandomNumber(1, config.size ** 2);
     }
   }
   const newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
@@ -73,20 +73,35 @@ buttonStart.addEventListener("click", () => {
   renderFoodAndProblems();
 });
 
-
 document.addEventListener('keydown', function (event) {
-
-  if (event.code == 'ArrowUp') {
-    smilePosition -= 5;
-  } else if (event.code == 'ArrowDown') {
-    smilePosition += 5;
-  } else if (event.code == 'ArrowRight') {
-    smilePosition++;
-  } else if (event.code == 'ArrowLeft') {
-    smilePosition--;
+  let oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
+  oldCellSmilePosition.className = "cell";
+  switch (event.code) {
+    case 'ArrowUp':
+      if (smilePosition <= 5) {
+        alert('Вы проиграли');
+      } smilePosition -= 5;
+      break;
+    case 'ArrowDown':
+      if (smilePosition > 20) {
+        alert('Вы проиграли');
+      } smilePosition += 5;
+      break;
+    case 'ArrowRight':
+      if (smilePosition % 5 == 0) {
+        alert('Вы проиграли');
+      } smilePosition++;
+      break;
+    case 'ArrowLeft':
+      if ((smilePosition - 1) % 5 == 0) {
+        alert('Вы проиграли');
+      } smilePosition--;
+      break;
+    default:
+      return;
   }
   let newPosition = smilePosition;
-  const newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${newPosition}"]`);
+  let newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${newPosition}"]`);
   newCellSmilePosition.className = "smile";
 });
 
