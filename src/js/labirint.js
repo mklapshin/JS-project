@@ -86,10 +86,12 @@ document.addEventListener('keydown', function (event) {
         flag = 0;
         smilePosition = 1;
         renderSmile();
-      } smilePosition -= 5;
-      newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
-      newCellSmilePosition.className = "smile";
-      break;
+      } else {
+        smilePosition -= 5;
+        newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
+        newCellSmilePosition.className = "smile";
+        break;
+      }
     case 'ArrowDown':
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
@@ -98,10 +100,12 @@ document.addEventListener('keydown', function (event) {
         flag = 0;
         smilePosition = 1;
         renderSmile();
-      } smilePosition += 5;
-      newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
-      newCellSmilePosition.className = "smile";
-      break;
+      } else {
+        smilePosition += 5;
+        newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
+        newCellSmilePosition.className = "smile";
+        break;
+      }
     case 'ArrowRight':
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
@@ -110,10 +114,12 @@ document.addEventListener('keydown', function (event) {
         flag = 0;
         smilePosition = 1;
         renderSmile();
-      } smilePosition++;
-      newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
-      newCellSmilePosition.className = "smile";
-      break;
+      } else {
+        smilePosition++;
+        newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
+        newCellSmilePosition.className = "smile";
+        break;
+      }
     case 'ArrowLeft':
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
@@ -122,19 +128,15 @@ document.addEventListener('keydown', function (event) {
         flag = 0;
         smilePosition = 1;
         renderSmile();
-      } smilePosition--;
-      newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
-      newCellSmilePosition.className = "smile";
-      break;
+      } else {
+        smilePosition--;
+        newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
+        newCellSmilePosition.className = "smile";
+        break;
+      }
     default:
       return;
   }
-  // if (flag != 0) {
-  //   let newPosition = smilePosition;
-  //   let newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${newPosition}"]`);
-  //   newCellSmilePosition.className = "smile";
-  // }
-
 });
 
 
