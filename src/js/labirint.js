@@ -16,9 +16,10 @@ numberCell + 1  - при клике вправо, но сначала прове
 
 */
 
-let flag = 1;
 let oldCellSmilePosition = 1;
 let newCellSmilePosition = 1;
+let food = 1;
+let problems = 1;
 const config = {
   size: 5
 }
@@ -49,15 +50,15 @@ function getRandomNumber(min, max) {
 
 function renderSmile() {
   let smile = 1;
-  const newCellSmile = document.querySelector(`.cell[data-coordinate="${smile}"]`);
+  let newCellSmile = document.querySelector(`.cell[data-coordinate="${smile}"]`);
   newCellSmile.className = "smile";
 };
 
 function renderFoodAndProblems() {
-  let food = getRandomNumber(1, config.size ** 2);
+  food = getRandomNumber(1, config.size ** 2);
   const newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
   newCellFood.className = "food";
-  let problems = getRandomNumber(1, config.size ** 2);
+  problems = getRandomNumber(1, config.size ** 2);
   if (problems == food) {
     while (problems == food) {
       problems = getRandomNumber(1, config.size ** 2);
@@ -82,12 +83,14 @@ document.addEventListener('keydown', function (event) {
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
       if (smilePosition <= 5) {
-        alert('Вы проиграли');
-        flag = 0;
-        smilePosition = 1;
-        renderSmile();
-      } else {
+        gameOver();
+      }
+      else {
         smilePosition -= 5;
+        if (smilePosition == problems) {
+          gameOver();
+          break;
+        }
         newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
         newCellSmilePosition.className = "smile";
         break;
@@ -96,12 +99,13 @@ document.addEventListener('keydown', function (event) {
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
       if (smilePosition > 20) {
-        alert('Вы проиграли');
-        flag = 0;
-        smilePosition = 1;
-        renderSmile();
+        gameOver();
       } else {
         smilePosition += 5;
+        if (smilePosition == problems) {
+          gameOver();
+          break;
+        }
         newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
         newCellSmilePosition.className = "smile";
         break;
@@ -110,12 +114,13 @@ document.addEventListener('keydown', function (event) {
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
       if (smilePosition % 5 == 0) {
-        alert('Вы проиграли');
-        flag = 0;
-        smilePosition = 1;
-        renderSmile();
+        gameOver();
       } else {
         smilePosition++;
+        if (smilePosition == problems) {
+          gameOver();
+          break;
+        }
         newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
         newCellSmilePosition.className = "smile";
         break;
@@ -124,21 +129,25 @@ document.addEventListener('keydown', function (event) {
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
       oldCellSmilePosition.className = "cell";
       if ((smilePosition - 1) % 5 == 0) {
-        alert('Вы проиграли');
-        flag = 0;
-        smilePosition = 1;
-        renderSmile();
+        gameOver();
       } else {
         smilePosition--;
+        if (smilePosition == problems) {
+          gameOver();
+          break;
+        }
         newCellSmilePosition = document.querySelector(`.cell[data-coordinate="${smilePosition}"]`);
         newCellSmilePosition.className = "smile";
         break;
       }
-    default:
-      return;
   }
 });
 
+function gameOver() {
+  alert('Вы проиграли');
+  renderSmile();
+  smilePosition = 1;
+};
 
 
 
