@@ -22,12 +22,14 @@ let smilePosition = 1;
 let foodItems = [1];
 let food = 1;
 let problems = 1;
+let score = 0;
+let newScore = 1;
 const config = {
   size: 5
 }
 const board = document.getElementById('board');
 
-
+let problemsCoordinates = [];
 function render(board) {
 
   for (let i = 1; i <= config.size ** 2; i++) {
@@ -53,13 +55,13 @@ function getRandomNumber(min, max) {
 
 function renderFoodAndProblems() {
   food = getRandomNumber(1, config.size ** 2);
-  // foodItems.push(food);
-
-  // for (let i = 0; i < 2; i++) {
-  //   let newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
-  //   newCellFood.className = "food";
-  // }
-  const newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
+  let newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
+  if (newCellFood == null) {
+    while (newCellFood == null) {
+      food = getRandomNumber(1, config.size ** 2);
+      newCellFood = document.querySelector(`.cell[data-coordinate="${food}"]`);
+    }
+  }
   newCellFood.className = "food";
   problems = getRandomNumber(1, config.size ** 2);
   if (problems == food) {
@@ -67,8 +69,18 @@ function renderFoodAndProblems() {
       problems = getRandomNumber(1, config.size ** 2);
     }
   }
-  const newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
+  let newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
+  while (newCellProblems == null) {
+    problems = getRandomNumber(1, config.size ** 2);
+    if (problems == food) {
+      while (problems == food) {
+        problems = getRandomNumber(1, config.size ** 2);
+      }
+    }
+    newCellProblems = document.querySelector(`.cell[data-coordinate="${problems}"]`);
+  }
   newCellProblems.className = "problems";
+  problemsCoordinates.push(problems);
 };
 
 buttonStart.addEventListener("click", () => {
@@ -90,8 +102,20 @@ document.addEventListener('keydown', function (event) {
         return;
       } else {
         smilePosition -= 5;
+        // let checkProblem = document.querySelector(`.problems[data-coordinate="${smilePosition}"]`);
+        // alert(checkProblem);
+        for (let i = 0; i < problemsCoordinates.length; i++) {
+          if (smilePosition == problemsCoordinates[i]) {
+            alert('Вы проиграли')
+            renderSmile();
+            return;
+          }
+        };
         if (smilePosition == food) {
           alert('Вы выиграли');
+          score++;
+          newScore = document.getElementById("scoreValue");
+          newScore.innerHTML = score;
           renderFoodAndProblems();
 
           newCellSmilePosition = document.querySelector(`.food[data-coordinate="${smilePosition}"]`);
@@ -116,8 +140,19 @@ document.addEventListener('keydown', function (event) {
         return;
       } else {
         smilePosition += 5;
+        for (let i = 0; i < problemsCoordinates.length; i++) {
+
+          if (smilePosition == problemsCoordinates[i]) {
+            alert('Вы проиграли')
+            renderSmile();
+            return;
+          }
+        };
         if (smilePosition == food) {
           alert('Вы выиграли');
+          score++;
+          newScore = document.getElementById("scoreValue");
+          newScore.innerHTML = score;
           renderFoodAndProblems();
 
           newCellSmilePosition = document.querySelector(`.food[data-coordinate="${smilePosition}"]`);
@@ -138,12 +173,24 @@ document.addEventListener('keydown', function (event) {
       oldCellSmilePosition.className = "cell";
       if (smilePosition % 5 == 0) {
         alert('Вы проиграли')
+
         renderSmile();
         return;
       } else {
         smilePosition++;
+        for (let i = 0; i < problemsCoordinates.length; i++) {
+
+          if (smilePosition == problemsCoordinates[i]) {
+            alert('Вы проиграли')
+            renderSmile();
+            return;
+          }
+        };
         if (smilePosition == food) {
           alert('Вы выиграли');
+          score++;
+          newScore = document.getElementById("scoreValue");
+          newScore.innerHTML = score;
           renderFoodAndProblems();
 
           newCellSmilePosition = document.querySelector(`.food[data-coordinate="${smilePosition}"]`);
@@ -168,8 +215,18 @@ document.addEventListener('keydown', function (event) {
         return;
       } else {
         smilePosition--;
+        for (let i = 0; i < problemsCoordinates.length; i++) {
+          if (smilePosition == problemsCoordinates[i]) {
+            alert('Вы проиграли')
+            renderSmile();
+            return;
+          }
+        };
         if (smilePosition == food) {
           alert('Вы выиграли');
+          score++;
+          newScore = document.getElementById("scoreValue");
+          newScore.innerHTML = score;
           renderFoodAndProblems();
 
           newCellSmilePosition = document.querySelector(`.food[data-coordinate="${smilePosition}"]`);
@@ -194,6 +251,7 @@ function renderSmile() {
   newCellSmile.className = "smile";
   smilePosition = 1;
 };
+
 
 // function gameOver() {
 //   alert('Вы проиграли');
