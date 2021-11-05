@@ -81,6 +81,7 @@ buttonStart.addEventListener("click", () => {
   renderFoodAndProblems();
 });
 document.addEventListener('keydown', function (event) {
+  event.preventDefault();
   switch (event.code) {
     case 'ArrowUp':
       oldCellSmilePosition = document.querySelector(`.smile[data-coordinate="${smilePosition}"]`);
