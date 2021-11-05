@@ -32,6 +32,8 @@ function cleanBoard() {
   score = 0;
   renderFoodAndProblems();
   renderSmile();
+  newScore = document.getElementById("scoreValue");
+  newScore.innerHTML = score;
 }
 function generateItem() {
   const newItem = getRandomNumber(1, config.size * config.size)
@@ -71,7 +73,6 @@ function renderFoodAndProblems() {
   newCellProblems.className = "problems";
   problemsCoordinates.push(problems);
 };
-
 buttonStart.addEventListener("click", () => {
   render(board);
   const timeCountdown = document.getElementById("scoreValue");
@@ -79,7 +80,6 @@ buttonStart.addEventListener("click", () => {
   renderSmile();
   renderFoodAndProblems();
 });
-
 document.addEventListener('keydown', function (event) {
   switch (event.code) {
     case 'ArrowUp':
@@ -230,3 +230,10 @@ function renderSmile() {
   newCellSmile.className = "smile";
   smilePosition = 1;
 };
+
+// window.addEventListener("keydown", function (e) {
+//   // space and arrow keys
+//   if ([32, 37, 38, 39, 40].indexOf(e.code) > -1) {
+//     e.preventDefault();
+//   }
+// }, false);
