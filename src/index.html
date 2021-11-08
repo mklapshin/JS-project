@@ -9,11 +9,9 @@
 </head>
 
 <body>
-
 	<div class="slider">
 		<div class="slider__body">
 			<button class="slider__prev btn">&#10094;</button>
-
 			<div class="slider__container">
 				<div class="slider__track">
 					<div class="slider__slide">
@@ -42,7 +40,6 @@
 					</div>
 				</div>
 			</div>
-
 			<button class="slider__next btn">&#10095;</button>
 		</div>
 	</div>
@@ -81,9 +78,9 @@
 	</div>
 	<div class="pomodoro">
 		<h1 class="pomodoro-header">Pomodoro</h1>
-        <div class="pomodoro-container">
-            <div class="pomodoro-menu">
-                <button id="mainPomodoro" class="pomodoro-menu-button">Pomodoro</button>
+		<div class="pomodoro-container">
+			<div class="pomodoro-menu">
+				<button id="mainPomodoro" class="pomodoro-menu-button">Pomodoro</button>
 				<button id="shortBreak" class="pomodoro-menu-button">Short Break</button>
 				<button class="pomodoro-menu-button">Long Break</button>
 			</div>
@@ -92,7 +89,7 @@
 				<div id="increaseMinutes" class="pomodoro-screen-settings-1-minutes">/\</div>
 				<div id="increaseSeconds" class="pomodoro-screen-settings-1-seconds">/\</div>
 			</div>
-			<div id="demo" class="pomodoro-screen">	
+			<div id="demo" class="pomodoro-screen">
 			</div>
 			<div class="pomodoro-screen-settings-2">
 				<div id="decreaseHours" class="pomodoro-screen-settings-2-hours">\/</div>
@@ -107,7 +104,17 @@
 			</div>
 		</div>
 	</div>
-
+	<div id="game" class="game">
+		<div id="score" class="score">
+			<span id="scoreValue" class="value"></span>
+		</div>
+		<div id="board" class="board"></div>
+		<div id="buttons" class="buttons">
+			<button id="buttonStart" class="start" type="button">Начать</button>
+			<button id="buttonPause" class="pause" type="button">Пауза</button>
+			<button id="buttonStop" class="stop" type="button">Сдаться</button>
+		</div>
+	</div>
 </body>
 
 </html>
