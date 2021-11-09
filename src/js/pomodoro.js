@@ -1,4 +1,4 @@
-import sound from '../assets/sound.mp3';
+import sound from '../audio/sound.mp3';
 
 let workStatus = true;
 let interval;
