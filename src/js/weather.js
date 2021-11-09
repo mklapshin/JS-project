@@ -42,7 +42,7 @@ async function btnWeatherHandler() {
   }
 }
 
-document.addEventListener('keydown', function (event) {
+inputCity.addEventListener('keydown', function (event) {
   switch (event.code) {
     case 'Enter':
       btnWeatherHandler();
