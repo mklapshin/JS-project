@@ -1,11 +1,8 @@
-
-
-@import url("courusel.scss");
-
-@import url("calculator.scss");
-
-@import url("pomodoro.scss");
-
-@import url("labirint.scss");
-
-@import url("vars.scss");
+@import "./fonts.scss";
+@import "./vars.scss";
+@import "./core.scss";
+@import "./courusel.scss";
+@import "./calculator.scss";
+@import "./pomodoro.scss";
+@import "./labirint.scss";
+@import "./weather.scss";
