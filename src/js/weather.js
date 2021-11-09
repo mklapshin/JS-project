@@ -42,6 +42,13 @@ async function btnWeatherHandler() {
   }
 }
 
+document.addEventListener('keydown', function (event) {
+  switch (event.code) {
+    case 'Enter':
+      btnWeatherHandler();
+  }
+});
+
 function renderWeatherApplication(data) {
   return `
     <div class="app__info">
