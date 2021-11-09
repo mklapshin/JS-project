@@ -43,9 +43,8 @@ async function btnWeatherHandler() {
 }
 
 inputCity.addEventListener('keydown', function (event) {
-  switch (event.code) {
-    case 'Enter':
-      btnWeatherHandler();
+  if (event.code == 'Enter') {
+    btnWeatherHandler();
   }
 });
 
